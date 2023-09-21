@@ -2,26 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.horizontal-scroll {
+  @apply overflow-x-auto p-2 scroll-smooth flex-nowrap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.form-control {
+  @apply py-2 px-3 border border-light outline-none rounded ring-2 ring-transparent focus:ring-light focus:border-transparent;
+}
+
+.btn {
+  @apply rounded-lg px-4 py-2 transition-all duration-500 focus:outline-none focus:ring;
+}
+.btn-xs {
+  @apply py-1 px-2 text-sm;
+}
+
+.btn-sm {
+  @apply py-2 px-3 text-sm;
+}
+
+.btn-lg {
+  @apply py-3 px-6 text-lg;
+}
+
+.btn-xl {
+  @apply py-4 px-8 text-xl;
+}
+
+.btn-main {
+  @apply bg-main-500 dark:bg-light text-white dark:text-dark hover:bg-main-600 dark:hover:bg-main-200 focus:ring-main-300 dark:focus:ring-secondary-300;
+}
+
+.btn-outline-main {
+  @apply bg-transparent text-main-500 border border-main-500 hover:bg-main-500 hover:text-white hover:border-transparent focus:ring-main-500;
+}
+
+.btn-secondary {
+  @apply bg-secondary-500 text-dark hover:bg-secondary-600 focus:ring-secondary-300;
+}
+
+.btn-outline-secondary {
+  @apply bg-transparent text-secondary-500 border border-secondary-500 hover:bg-secondary-500 hover:text-dark hover:border-transparent focus:ring-secondary-300;
+}
+
+.nav-link {
+  @apply text-dark dark:text-white hover:text-main-500 dark:hover:text-secondary-400;
+}
+
+.nav-link.current{
+  @apply text-main-500 dark:text-secondary-400;
+}
+
+.page-link {
+  @apply inline-flex items-center justify-center w-8 h-8 p-2 rounded-lg cursor-pointer transition-all duration-500 border border-light hover:border-main-400 hover:bg-secondary-500;
+}
+
+.page-link.current {
+  @apply bg-main-400 text-white hover:bg-main-500 hover:border-main-300;
 }
