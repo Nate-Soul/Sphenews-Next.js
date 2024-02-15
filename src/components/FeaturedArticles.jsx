@@ -1,41 +1,40 @@
 "use client";
 
+import useFetch from "@/hooks/useFetch";
 import Image from "next/image";
-import Link from "next/link"
+import Link from "next/link";
 import useCarousel from "@/hooks/useCarousel";
 
 const FeaturedArticles = () => {
 
-    const featured_articles = [
-        {
-          id: 1,
-          title: "COVID-19 Vaccine Rollout: Progress and Challenges",
-          slug: "covid-19-vaccine-rollout-progress-and-challenges",
-          excerpt:
-            "As the global COVID-19 vaccination campaigns continue, there have been significant achievements and hurdles to overcome. This article explores the progress made in vaccine distribution and the challenges",
-          imageUrl: "/images/articles/3.jpg",
-        },
-        {
-          id: 2,
-          title:
-            "The Rise of Electric Vehicles: Driving Towards a Sustainable Future",
-          slug: "the-rise-of-electric-vehicles-driving-towards-a-sustainable-future",
-          excerpt:
-            "Electric vehicles (EVs) are gaining momentum as a sustainable transportation solution. This article delves into the growing popularity of EVs, their environmental benefits, and the challenges in transitioning to an electrified automotive landscape.",
-          imageUrl: "/images/articles/2.jpg",
-        },
-        {
-          id: 3,
-          title:
-            "The Power of Music: Exploring its Psychological and Emotional Impact",
-          slug: "the-power-of-music-exploring-its-psychological-and-emotional-impact",
-          excerpt:
-            "Music has a profound effect on our emotions and mental well-being. This article delves into the psychological benefits of music, its impact on mood regulation, and its therapeutic potential.",
-          imageUrl: "/images/articles/1.jpg",
-        },
-      ];
+  const { 
+    data, 
+    error, 
+    loading 
+  } = useFetch("http://localhost:8000/api/articles/?featured=true&limit=5");
+
+  // console.log(data);
+
+  
+  if (loading) {
+    return (
+      <p>Loading featured articles...</p>
+      )
+    }
+    
+    if (error){
+      return (
+        <p>There was an error loading categories</p>
+        )
+    }
+
+    if(data === null){
+      return (
+        <></>
+      )
+    }
       
-  const { currentSlide, goToSlide } = useCarousel(featured_articles, 10000);
+    // const { currentSlide, goToSlide } = useCarousel(data?.length, 10000);
 
   return (
     <section id="featuredArticles" className="py-14 bg-light overflow-hidden">
@@ -44,8 +43,7 @@ const FeaturedArticles = () => {
           Featured Stories
         </h3>
         <div className="carousel flex relative">
-          {featured_articles &&
-            featured_articles.map((featured_article, index) => (
+          {data?.map((featured_article, index) => (
               <article
                 key={index}
                 className={`carousel-item transition-opacity flex-shrink-0 w-full rounded-lg overflow-hidden shadow-custom hover:shadow-secondary-500 ${
@@ -59,7 +57,7 @@ const FeaturedArticles = () => {
                   className="flex-1"
                 >
                   <Image
-                    src={featured_article.imageUrl}
+                    src={featured_article.featured_image_url}
                     alt={featured_article.title}
                     height={500}
                     width={800}
@@ -86,7 +84,7 @@ const FeaturedArticles = () => {
             ))}
         </div>
         <div className="slider-indicators text-center flex items-center justify-center gap-3 mt-8">
-          {featured_articles.map((_, index) => (
+          {data?.map((_, index) => (
             <button
               key={index}
               className={`indicator rounded-full w-3 h-3 ${

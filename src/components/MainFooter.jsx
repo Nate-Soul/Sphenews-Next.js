@@ -37,9 +37,9 @@ const MainFooter = () => {
   ];
 
   return (
-    <footer className="bg-main-500 text-white py-10">
+    <footer className="bg-main-500 text-white dark:bg-main-900 py-10">
       <div className="container">
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
           <div className="flex flex-col gap-4">
             <h6 className="font-bold text-4xl text-light">Sphenews</h6>
             {/* <Image src="/sphenews-logo.png" alt="Sphenews Logo" width={100} height={70}/> */}
@@ -64,7 +64,7 @@ const MainFooter = () => {
             <Link type="tel" href="+123-456-7890" className="text-light hover:text-secondary-500">(123) 456 7890</Link>
           </div>
         </div>
-        <div className="flex items-center justify-between py-3">
+        <div className="flex flex-col gap-4 sm:flex-row sm:gap-0 items-center justify-between py-3">
           <p>Sphenews &copy; 2023 | All rights reserved.</p>
           <p>Made with love using Next.js & Django</p>
         </div>

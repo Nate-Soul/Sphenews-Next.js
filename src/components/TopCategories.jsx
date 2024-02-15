@@ -2,65 +2,54 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import useFetch from "@/hooks/useFetch";
 import useHorizontalScroll from "@/hooks/useHorizontalScroll";
 
 const TopCategories = () => {
-    
-  const top_categories = [
-    {
-      id: 1,
-      name: "World News",
-      slug: "world-news",
-      imageUrl: "/images/categories/1.jpg",
-    },
-    {
-      id: 2,
-      name: "Music",
-      slug: "music",
-      imageUrl: "/images/categories/2.jpg",
-    },
-    {
-      id: 3,
-      name: "Health & Wellness",
-      slug: "health-wellness",
-      imageUrl: "/images/categories/3.jpg",
-    },
-    {
-      id: 4,
-      name: "Technology",
-      slug: "tecnology",
-      imageUrl: "/images/categories/4.jpg",
-    },
-    {
-      id: 5,
-      name: "Sports",
-      slug: "sports",
-      imageUrl: "/images/categories/4.jpg",
-    },
-    {
-      id: 6,
-      name: "Politics",
-      slug: "politics",
-      imageUrl: "/images/categories/4.jpg",
-    },
-  ];
 
+  const { 
+    data, 
+    error, 
+    loading 
+  } = useFetch("http://localhost:8000/api/categories?top=true&limit=8");
   
-  const { carouselInnerRef, scrollCarousel, canScrollLeft, canScrollRight } =
-    useHorizontalScroll();
+  // const { 
+  //   carouselInnerRef, 
+  //   scrollCarousel, 
+  //   canScrollLeft, 
+  //   canScrollRight 
+  // } = useHorizontalScroll();
+
+  if (loading) {
+    return (
+      <p>Loading categories</p>
+    )
+  }
+
+  if (error){
+    return (
+      <p>There was an error loading categories</p>
+    )
+  }
+
+  if(!data || data === null){
+    return (
+      <></>
+    )
+  }
 
   return (
-    <section id="topCategories" className="py-14 bg-white dark:bg-main-200">
+    <section id="topCategories" className="py-14 bg-white dark:bg-main-900">
       <div className="container">
-        <h3 className="text-sm rounded-3xl font-bold uppercase mb-8 text-gray-500 dark:text-white">
+        <h2 className="text-sm rounded-3xl font-bold uppercase mb-8 text-gray-500 dark:text-white">
           Top Categories
-        </h3>
+        </h2>
         <div
-          className="flex gap-5 horizontal-scroll hide-scrollbar"
-          ref={carouselInnerRef}
+          className="flex gap-5 horizontal-scroll hide-scrollbar" 
+          // ref={carouselInnerRef}
         >
-          {top_categories &&
-            top_categories.map((top_category, index) => (
+          {data &&
+            data.map((top_category, index) => (
               <Link
                 href={`/blog/category/${top_category.slug}`}
                 key={index}
@@ -68,7 +57,7 @@ const TopCategories = () => {
               >
                 <figure>
                   <Image
-                    src={top_category.imageUrl}
+                    src={top_category.cover_photo_url}
                     height={200}
                     width={200}
                     alt="category name"
@@ -82,7 +71,7 @@ const TopCategories = () => {
             ))}
         </div>
         <div className="flex items-center justify-center mt-6 gap-3">
-          <button
+          {/* <button
             className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-main-500 text-white hover:bg-main-600"
             onClick={(e) => scrollCarousel(e, "left")}
             disabled={!canScrollLeft}
@@ -95,7 +84,7 @@ const TopCategories = () => {
             disabled={!canScrollRight}
           >
             <span className="bi-chevron-right font-bold"></span>
-          </button>
+          </button> */}
         </div>
       </div>
     </section>

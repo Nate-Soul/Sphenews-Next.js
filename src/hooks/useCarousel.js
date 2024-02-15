@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 const useCarousel = (carouselItems, duration = 3000) => {
     
@@ -8,11 +8,11 @@ const useCarousel = (carouselItems, duration = 3000) => {
 
   
   const prevSlide = () => {
-    setCurrentSlide(prev => (prev === 0 ? carouselItems.length - 1 : prev - 1));
+    setCurrentSlide(prev => (prev === 0 ? carouselItems - 1 : prev - 1));
   }
   
   const nextSlide = () => {
-    setCurrentSlide(prev => (prev === carouselItems.length - 1 ? 0 : prev + 1 ));
+    setCurrentSlide(prev => (prev === carouselItems - 1 ? 0 : prev + 1 ));
   }
 
   const goToSlide = (slideIndex) => {

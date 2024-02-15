@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Hero/>
       <TopCategories/>
-      <FeaturedArticles/>
+      {/* <FeaturedArticles/>  */}
       <RecentArticles/>
     </>
   );

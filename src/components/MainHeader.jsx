@@ -1,9 +1,10 @@
+import Navbar from "./Navbar"
 
 
 const MainHeader = () => {
   return (
     <header>
-      
+      <Navbar/>
     </header>
   )
 }

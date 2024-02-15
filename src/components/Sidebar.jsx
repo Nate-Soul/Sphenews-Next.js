@@ -6,7 +6,7 @@ import SidebarCategories from "./SidebarCategories"
 
 const Sidebar = ({ children }) => {
   return (
-    <aside className="col-span-4 sticky top-36 flex flex-col gap-y-8">
+    <aside className="col-span-full lg:col-span-4 sticky top-36 flex flex-col gap-y-8">
         <SearchDailog/>
         <SidebarArticles type="Popular"/>
         <SidebarCategories/>

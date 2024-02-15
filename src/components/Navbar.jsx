@@ -1,14 +1,10 @@
 "use client";
 
-import { useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ThemeContext } from "@/context/ThemeContext";
 
 const Navbar = () => {
-
-  const { darkMode } = useContext(ThemeContext);
 
   const currentUrl = usePathname();
 
@@ -36,16 +32,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="shadow-sm py-4 z-50 sticky top-0 bg-light dark:bg-main-500 bg-opacity-90 dark:bg-opacity-90">
+    <nav className="shadow-sm py-4 z-50 sticky top-0 bg-light bg-opacity-90 dark:bg-main-900 dark:bg-opacity-95">
       <div className="container flex items-center justify-between">
         <Link href="/">
-          {darkMode ? (
-            <Image src="/sphenews-logo-white.svg" height="30" width="50" alt="Sphenews Logo" className="h-auto"/>
-            ) : (
-            <Image src="/sphenews-logo.svg" height="30" width="50" alt="Sphenews Logo" className="h-auto"/>
-          )}
+            <Image src="/sphenews-logo-light.svg" height="30" width="50" alt="Sphenews Logo Light" className="h-0 dark:h-auto"/>
+            <Image src="/sphenews-logo-dark.svg" height="30" width="50" alt="Sphenews Logo Dark" className="h-auto dark:h-0"/>
         </Link>
-        <ul className="flex items-center gap-5">
+        <ul className="hidden md:flex items-center gap-5">
           {links.map(link => (
             <Link 
               key={link.id} 
@@ -66,6 +59,12 @@ const Navbar = () => {
           >
             <span className="bi-pen"></span>
           </Link> */}
+        </ul>
+        <ul className="flex md:hidden">
+          <li>
+            <button> <span className="bi bi-chevron-left"></span> </button>
+            {/* <button> <span className="bi bi-chevron-left"></span> </button> */}
+          </li>
         </ul>
       </div>
     </nav>

@@ -19,10 +19,10 @@ const SidebarArticles = ({type}) => {
                 />
             </Link>
             <div className="basis-3/4">
-                <span className="text-gray-500 text-sm block mb-4">April 09, 2022</span>
+                <span className="text-gray-500 dark:text-main-400 text-sm block mb-4">April 09, 2022</span>
                 <Link 
                     href={`/blog/slug`}
-                    className="text-main-400 hover:text-main-500 hover:line-through"
+                    className="text-main-400 dark:text-secondary-300 hover:text-main-500 dark:hover:text-secondary-400 hover:line-through"
                 >
                     <h5>COVID-19 Vaccine Rollout: Progress And Challenges</h5>
                 </Link>
@@ -41,10 +41,10 @@ const SidebarArticles = ({type}) => {
                 />
             </Link>
             <div className="basis-3/4">
-                <span className="text-gray-500 text-sm block mb-4">April 09, 2022</span>
+                <span className="text-gray-500 dark:text-main-400 text-sm block mb-4">April 09, 2022</span>
                 <Link 
                     href={`/blog/slug`}
-                    className="text-main-400 hover:text-main-500 hover:line-through"
+                    className="text-main-400 dark:text-secondary-300 hover:text-main-500 dark:hover:text-secondary-400 hover:line-through"
                 >
                     <h5>COVID-19 Vaccine Rollout: Progress And Challenges</h5>
                 </Link>
@@ -63,10 +63,10 @@ const SidebarArticles = ({type}) => {
                 />
             </Link>
             <div className="basis-3/4">
-                <span className="text-gray-500 text-sm block mb-4">April 09, 2022</span>
+                <span className="text-gray-500 dark:text-main-400 text-sm block mb-4">April 09, 2022</span>
                 <Link 
                     href={`/blog/slug`}
-                    className="text-main-400 hover:text-main-500 hover:line-through"
+                    className="text-main-400 dark:text-secondary-300 hover:text-main-500 dark:hover:text-secondary-400 hover:line-through"
                 >
                     <h5>COVID-19 Vaccine Rollout: Progress And Challenges</h5>
                 </Link>

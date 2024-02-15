@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { dateFormatter, linebreaksToBr } from "@/utils/textFormatter";
 
 async function getData(slug) {
-  const res = await fetch(`http://localhost:8000/api/articles/${slug}/`);
+  const res = await fetch(`http://localhost:8000/api/articles/${slug}`);
 
   if(!res.ok){
     return notFound();
@@ -55,7 +55,7 @@ const BlogSingle = async ({params}) => {
           </div>
         </header>
         <div className="flex flex-col gap-6">
-          <div className="text-justify leading-7" dangerouslySetInnerHTML={{ __html: linebreaksToBr(article.content) }}></div>
+          <div className="text-justify leading-7 flex flex-col gap-4" dangerouslySetInnerHTML={{ __html: linebreaksToBr(article.content) }}></div>
           <p>
             <span className="font-semibold">Tags: </span>
             {article.tags.map((tag) => (

@@ -1,62 +1,36 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const RecentArticles = () => {
-    
-  const recent_articles = [
-    {
-      id: 1,
-      title:
-        "The Rise of Electric Vehicles: Driving Towards a Sustainable Future",
-      slug: "covid-19-vaccine-rollout-progress-and-challenges",
-      excerpt:
-        "As the global COVID-19 vaccination campaigns continue, there have been significant achievements and hurdles to overcome. This article explores the progress made in vaccine distribution and the challenges...",
-      imageUrl: "/images/articles/3.jpg",
-    },
-    {
-      id: 2,
-      title:
-        "The Power of Music: Exploring its Psychological and Emotional Impact",
-      slug: "the-power-of-music-exploring-its-psychological-and-emotional-impact",
-      excerpt:
-        "Music has a profound effect on our emotions and mental well-being. This article delves into the psychological benefits of music, its impact on mood regulation, and its therapeutic potential.",
-      imageUrl: "/images/articles/2.jpg",
-    },
-    {
-      id: 3,
-      title:
-        "Exploring Mars: The Red Planet's Mysteries and Potential for Human Exploration",
-      slug: "exploring-mars-the-red-planets-mysteries-and-potential-for-human-exploration",
-      excerpt:
-        "Mars has captivated human curiosity for centuries. This article delves into the mysteries surrounding the Red Planet, recent scientific discoveries, and the potential for future human exploration.",
-      imageUrl: "/images/articles/1.jpg",
-    },
-    // {
-    //   id: 4,
-    //   title: "COVID-19 Vaccine Rollout: Progress and Challenges",
-    //   slug: "covid-19-vaccine-rollout-progress-and-challenges",
-    //   excerpt:
-    //     "As the global COVID-19 vaccination campaigns continue, there have been significant achievements and hurdles to overcome. This article explores the progress made in vaccine distribution and the challenges..",
-    //   imageUrl: "/images/articles/2.jpg",
-    // },
-  ];
+async function getData() {
+  const res = await fetch(`http://localhost:8000/api/articles/?limit=3`);
+
+  if(!res.ok){
+    return notFound();
+  }
+
+  return res.json();
+}
+
+const RecentArticles = async () => {
+
+  const recent_articles = await getData()
 
   return (
-    <section id="recentArticles" className="py-14 bg-white dark:bg-main-200">
+    <section id="recentArticles" className="py-14 bg-slate-50 dark:bg-main-900">
       <div className="container">
-        <h3 className="text-sm rounded-3xl font-bold uppercase mb-8 text-gray-500 dark:text-white">
+        <h2 className="text-sm rounded-3xl font-bold uppercase mb-8 text-gray-500 dark:text-white">
           Recent Articles
-        </h3>
-        <div className="grid grid-cols-3 shadow-custom dark:shadow dark:shadow-white overflow-hidden rounded-lg dark:bg-main-500">
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 shadow-custom dark:shadow dark:shadow-secondary-100 overflow-hidden rounded-lg dark:bg-main-900">
           {recent_articles &&
             recent_articles.map((recent_article, index) => (
               <article
                 key={index}
-                className="transition-all overflow-hidden shadow-sm shadow-main-100 dark:shadow-white p-10 flex flex-col gap-5"
+                className="transition-all overflow-hidden shadow-sm shadow-main-100 dark:shadow-secondary-100 p-10 flex flex-col gap-5"
               >
                 <Link href={`/blog/${recent_article.slug}`}>
                   <Image
-                    src={recent_article.imageUrl}
+                    src={recent_article.featured_image_url}
                     alt={recent_article.title}
                     height={300}
                     width={300}

@@ -9,7 +9,7 @@ const SidebarCategories = () => {
             <li>
                 <Link 
                     href={`/blog/category/slug`}
-                    className="inline-flex justify-between items-center hover:text-main-500">
+                    className="inline-flex justify-between items-center text-slate-50 hover:text-main-500 dark:hover:text-secondary-500">
                         Category name 1
                     <span>14</span>
                 </Link>

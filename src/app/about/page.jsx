@@ -15,8 +15,8 @@ const AboutUs = () => {
     <>
       <section className="py-14">
         <div className="container">
-          <div className="grid grid-cols-2 gap-8">
-            <figure className="about-img-container col-span-1 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <figure className="about-img-container relative hidden md:block">
               <Image 
                 src={AboutCover} 
                 className="object-cover filter"
@@ -24,30 +24,36 @@ const AboutUs = () => {
                 fill
               />
               <figcaption className="bg-secondary-500 text-main-500 p-3 absolute top-4 right-4 rounded">
-                <h1 className="text-3xl font-bold">The Author's Budding Hub</h1>
+                <h2 className="text-3xl font-bold">The Author's Budding Hub</h2>
                 <p className="text-lg font-semibold">Award winning creative writing hub</p>
               </figcaption>
             </figure>
-            <article className="col-span-1">
+            <article>
               <h1 className="text-3xl font-extrabold mb-8">About Sphenews</h1>
-              <p>
-              Welcome to Sphenews - the author's nest. We are a minimalistic blog for writers, by writers. Our goal is to provide a comfortable and supportive platform for authors of all levels to share their thoughts, ideas, and stories.
-              <br /><br />
-              We believe that writing is a powerful tool for self-expression, creativity, and personal growth. Our mission is to inspire and empower writers by providing high-quality content, expert advice, and a vibrant community of like-minded individuals.
-              <br /><br />
-              At Sphenews, you'll find articles on a wide range of topics, from creative writing tips and techniques to industry insights and book reviews. Our team of experienced writers and editors is dedicated to delivering engaging and informative content that will help you become a better writer and achieve your goals.
-              <br /><br />
-              We also believe in the power of collaboration and community. That's why we provide opportunities for writers to connect, share their work, and support each other's growth. Whether you're just starting out or you're a seasoned pro, you'll find a warm and welcoming home here at Sphenews.
-              <br /><br />
-              Thank you for visiting our blog, and we hope you'll join us on this exciting journey of exploration, discovery, and creativity.
-              </p>
+              <div className="flex flex-col gap-y-4">
+                <p>
+                  Welcome to Sphenews - the author's nest. We are a minimalistic blog for writers, by writers. Our goal is to provide a comfortable and supportive platform for authors of all levels to share their thoughts, ideas, and stories.
+                </p>
+                <p>
+                  We believe that writing is a powerful tool for self-expression, creativity, and personal growth. Our mission is to inspire and empower writers by providing high-quality content, expert advice, and a vibrant community of like-minded individuals.
+                </p>
+                <p>
+                  At Sphenews, you'll find articles on a wide range of topics, from creative writing tips and techniques to industry insights and book reviews. Our team of experienced writers and editors is dedicated to delivering engaging and informative content that will help you become a better writer and achieve your goals.
+                </p>
+                <p>
+                  We also believe in the power of collaboration and community. That's why we provide opportunities for writers to connect, share their work, and support each other's growth. Whether you're just starting out or you're a seasoned pro, you'll find a warm and welcoming home here at Sphenews.
+                </p>
+                <p>
+                  Thank you for visiting our blog, and we hope you'll join us on this exciting journey of exploration, discovery, and creativity.
+                </p>
+              </div>
             </article>
           </div>
         </div>
       </section>
       <section id="features" className="py-14">
         <h2 className="font-bold text-2xl capitalize text-center mb-8">Let's Help Realize Your Author Dreams</h2>
-        <div className="container grid grid-cols-4 gap-6">
+        <div className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="flex flex-col gap-4 items-center text-center shadow-sm shadow-main-400 p-3 rounded-lg">
             <Image src={CreativeIdeasImg} width={150} height={150} alt="Creative ideas image illustration"/>
             <h6 className="font-semibold">Creative Ideation</h6>

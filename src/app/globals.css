@@ -2,6 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 330 4% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 330 4% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 330 4% 9%;
+    --primary: 5 100% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 0 100% 98%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 0 100% 98%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 0 100% 98%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 5 100% 60%;
+    --radius: 1.5rem;
+  }
+
+  [data-theme='dark'] {
+    --background: 330 4% 9%;
+    --foreground: 210 40% 98%;
+    --card: 330 4% 9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 330 4% 9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+/* @layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
+
+
+
 .horizontal-scroll {
   @apply overflow-x-auto p-2 scroll-smooth flex-nowrap;
 }
@@ -16,7 +74,7 @@
 }
 
 .form-control {
-  @apply py-2 px-3 border border-light outline-none rounded ring-2 ring-transparent focus:ring-light focus:border-transparent;
+  @apply py-2 px-3 border border-main-300 bg-slate-50 dark:bg-main-800 outline-none rounded ring-2 ring-transparent focus:ring-main-200 dark:focus:ring-main-700 focus:border-transparent;
 }
 
 .btn {
@@ -39,11 +97,11 @@
 }
 
 .btn-main {
-  @apply bg-main-500 dark:bg-light text-white dark:text-dark hover:bg-main-600 dark:hover:bg-main-200 focus:ring-main-300 dark:focus:ring-secondary-300;
+  @apply bg-main-500 dark:bg-main-300 text-white dark:text-dark hover:bg-main-600 dark:hover:bg-main-200 focus:ring-main-300 dark:focus:ring-secondary-300;
 }
 
 .btn-outline-main {
-  @apply bg-transparent text-main-500 border border-main-500 hover:bg-main-500 hover:text-white hover:border-transparent focus:ring-main-500;
+  @apply bg-transparent text-main-500 dark:text-main-300 border border-main-500 dark:border-main-300 hover:bg-main-500 dark:hover:bg-main-300 hover:text-white dark:hover:text-main-900 hover:border-transparent focus:ring-main-500;
 }
 
 .btn-secondary {

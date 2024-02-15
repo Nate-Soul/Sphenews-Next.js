@@ -1,29 +1,33 @@
-import './globals.css'
+import "./globals.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import Navbar from '@/components/Navbar'
-import EmailSub from '@/components/EmailSub'
-import MainFooter from '@/components/MainFooter'
-import ThemeModeToggler from '@/components/ThemeModeToggler'
-import { ThemeContextProvider } from '@/context/ThemeContext'
+import { ThemeProvider } from "@/context/ThemeContext";
+import MainHeader from "@/components/MainHeader";
+import EmailSub from "@/components/EmailSub";
+import MainFooter from "@/components/MainFooter";
+import ThemeModeToggler from "@/components/ThemeModeToggler";
 
 export const metadata = {
-  title: 'Sphenews',
-  description: 'The author\'s nest',
+  title: "Sphenews",
+  description: "The go-to platform for budding authors",
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className='relative'>
-        <ThemeContextProvider>
-          <Navbar/>
+    <html lang="en" suppressHydrationWarning>
+      <body className="relative bg-slate-50 dark:bg-main-900">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          <MainHeader/>
           <main>
             {children}
           </main>
           <EmailSub/>
           <MainFooter/>
           <ThemeModeToggler/>
-        </ThemeContextProvider>
+        </ThemeProvider>
         </body>
     </html>
   )
